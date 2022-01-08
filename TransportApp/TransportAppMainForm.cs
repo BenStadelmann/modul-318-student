@@ -1,8 +1,8 @@
 namespace TransportApp
 {
-    public partial class Form1 : Form
+    public partial class TransportAppMainForm : Form
     {
-        public Form1()
+        public TransportAppMainForm()
         {
             InitializeComponent();
         }
