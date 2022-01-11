@@ -14,5 +14,14 @@ namespace TransportApp
         public string Platform { get; set; }
         public string EndTime { get; set; }
         public string EndStation { get; set; }
+
+        public ConnectionView(string startTime, string startStation, string platform, string endTime, string endStation)
+        {
+            StartTime = startTime;
+            StartStation = startStation;
+            Platform = platform;
+            EndTime = endTime;
+            EndStation = endStation;
+        }
     }
 }

@@ -21,6 +21,7 @@ namespace TransportApp
 
         private void SearchBtn_Click(object sender, EventArgs e)
         {
+            ConnectionViews.Clear();
             if (String.IsNullOrEmpty(StartStationTxt.Text))
             {
                 MessageBox.Show(ErrorNoStartStation);
@@ -28,21 +29,24 @@ namespace TransportApp
             }
             if (String.IsNullOrEmpty(EndStationTxt.Text))
             {
-                MessageBox.Show(ErrorNoEndStation);
+                List<StationBoard> stationBoards = new();
+                StationBoardRoot Root = new();
+                Root = transport.GetStationBoard(StartStationTxt.Text,"id");
+                stationBoards = Root.Entries;
+                string StationName = Root.Station.Name;
+                foreach (StationBoard stationBoard in stationBoards)
+                {
+                   
+                    ConnectionViews.Add(new ConnectionView(stationBoard.Stop.Departure.ToString(TimeHourMinuteFormat), StationName, "", "", stationBoard.To)); ;
+                }
                 return;
             }
-            ConnectionViews.Clear();
             List<Connection> Connections = new();
             Connections.AddRange(transport.GetConnections(StartStationTxt.Text, EndStationTxt.Text).ConnectionList);
             foreach (Connection c in Connections)
             {
-                ConnectionView NewView = new();
-                NewView.StartTime = c.From.Departure.Value.ToString(TimeHourMinuteFormat);
-                NewView.EndTime = c.To.Arrival.Value.ToString(TimeHourMinuteFormat);
-                NewView.StartStation = c.From.Station.Name;
-                NewView.EndStation = c.To.Station.Name;
-                NewView.Platform = c.From.Platform;
-                ConnectionViews.Add(NewView);
+                
+                ConnectionViews.Add(new ConnectionView(c.From.Departure.Value.ToString(TimeHourMinuteFormat), c.From.Station.Name, c.From.Platform,c.To.Arrival.Value.ToString(TimeHourMinuteFormat), c.To.Station.Name));
             }
 
         }
