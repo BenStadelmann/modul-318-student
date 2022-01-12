@@ -69,6 +69,7 @@
             this.EndStationCbx.Size = new System.Drawing.Size(121, 23);
             this.EndStationCbx.TabIndex = 6;
             this.EndStationCbx.DropDown += new System.EventHandler(this.GetOffers);
+            this.EndStationCbx.Leave += new System.EventHandler(this.SetRealStationNameInComboBox);
             // 
             // StartStationCbx
             // 
@@ -78,6 +79,7 @@
             this.StartStationCbx.Size = new System.Drawing.Size(121, 23);
             this.StartStationCbx.TabIndex = 5;
             this.StartStationCbx.DropDown += new System.EventHandler(this.GetOffers);
+            this.StartStationCbx.Leave += new System.EventHandler(this.SetRealStationNameInComboBox);
             // 
             // EndStationLbl
             // 
