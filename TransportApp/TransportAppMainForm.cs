@@ -66,9 +66,12 @@ namespace TransportApp
         private void SetRealStationNameInComboBox(object sender, EventArgs e)
         {
             ComboBox SenderCbx = (ComboBox)sender;
-            string RealStationName = transport.GetStations(SenderCbx.Text).StationList[0].Name;
-            if (RealStationName != SenderCbx.Text)
-                SenderCbx.Text = RealStationName;
+            if (!string.IsNullOrEmpty(SenderCbx.Text))
+            {
+                string RealStationName = transport.GetStations(SenderCbx.Text).StationList[0].Name;
+                if (RealStationName != SenderCbx.Text)
+                    SenderCbx.Text = RealStationName;
+            }
         }
     }
 }
