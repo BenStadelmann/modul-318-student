@@ -46,7 +46,7 @@ namespace TransportApp
             if (Connections.Count <= 0)
                 MessageBox.Show(ErrorNoConnections);
             foreach (Connection c in Connections)
-                if (c.From.Departure.HasValue && c.From.Departure.Value <= TimeDtp.Value && c.To.Arrival.HasValue)
+                if (c.From.Departure.HasValue  && c.To.Arrival.HasValue)
                     ConnectionViews.Add(new ConnectionView(c.From.Departure.Value.ToString(TimeHourMinuteFormat), c.From.Station.Name, c.From.Platform, c.To.Arrival.Value.ToString(TimeHourMinuteFormat), c.To.Station.Name));
         }
 
