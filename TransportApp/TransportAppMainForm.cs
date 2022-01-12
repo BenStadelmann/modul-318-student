@@ -10,9 +10,9 @@ namespace TransportApp
         ITransport transport = new Transport();
         private BindingList<ConnectionView> ConnectionViews = new();
 
-        private string ErrorNoStartStation = "Geben sie eine Startstation an!!";
-        private string ErrorNoEndStation = "Geben sie eine Endstation an!!";
+        private const string ErrorNoStartStation = "Geben sie eine Startstation an!!";
         private const string TimeHourMinuteFormat = "HH:mm";
+        private const string ErrorNoConnections = "Es gibt keine Verbindungen!!";
 
         public TransportAppMainForm()
         {
@@ -34,14 +34,19 @@ namespace TransportApp
                 Root = transport.GetStationBoard(StartStationCbx.Text, "id");
                 stationBoards = Root.Entries;
                 string StationName = Root.Station.Name;
+                if (stationBoards.Count <= 0)
+                    MessageBox.Show(ErrorNoConnections);
                 foreach (StationBoard stationBoard in stationBoards)
-                    ConnectionViews.Add(new ConnectionView(stationBoard.Stop.Departure.ToString(TimeHourMinuteFormat), StationName, "", "", stationBoard.To));
+                    if (stationBoard.Stop.Departure >= TimeDtp.Value)
+                        ConnectionViews.Add(new ConnectionView(stationBoard.Stop.Departure.ToString(TimeHourMinuteFormat), StationName, "", "", stationBoard.To));
                 return;
             }
             List<Connection> Connections = new();
-            Connections.AddRange(transport.GetConnections(StartStationCbx.Text, EndStationCbx.Text).ConnectionList);
+            Connections.AddRange(transport.GetConnections(StartStationCbx.Text, EndStationCbx.Text,TimeDtp.Value, ArrivalTimeBool.Checked).ConnectionList);
+            if (Connections.Count <= 0)
+                MessageBox.Show(ErrorNoConnections);
             foreach (Connection c in Connections)
-                if (c.From.Departure.HasValue && c.To.Arrival.HasValue)
+                if (c.From.Departure.HasValue && c.From.Departure.Value <= TimeDtp.Value && c.To.Arrival.HasValue)
                     ConnectionViews.Add(new ConnectionView(c.From.Departure.Value.ToString(TimeHourMinuteFormat), c.From.Station.Name, c.From.Platform, c.To.Arrival.Value.ToString(TimeHourMinuteFormat), c.To.Station.Name));
         }
 

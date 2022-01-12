@@ -50,7 +50,7 @@
         [Fact]
         public async Task ConnectionsAsync()
         {
-            Connections connections = await this.testee.GetConnectionsAsync("Sursee", "Luzern");
+            Connections connections = await this.testee.GetConnectionsAsync("Sursee", "Luzern", System.DateTime.Now, true);
 
             connections.Should().NotBeNull();
         }
@@ -58,7 +58,7 @@
         [Fact]
         public void Connections()
         {
-            Connections connections = this.testee.GetConnections("Sursee", "Luzern");
+            Connections connections = this.testee.GetConnections("Sursee", "Luzern", System.DateTime.Now, true);
 
             connections.Should().NotBeNull();
         }

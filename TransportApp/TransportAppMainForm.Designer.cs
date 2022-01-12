@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.InputGbx = new System.Windows.Forms.GroupBox();
+            this.ArrivalTimeBool = new System.Windows.Forms.CheckBox();
+            this.TimeLbl = new System.Windows.Forms.Label();
+            this.TimeDtp = new System.Windows.Forms.DateTimePicker();
             this.EndStationCbx = new System.Windows.Forms.ComboBox();
             this.StartStationCbx = new System.Windows.Forms.ComboBox();
             this.EndStationLbl = new System.Windows.Forms.Label();
@@ -49,6 +52,9 @@
             // 
             this.InputGbx.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.InputGbx.Controls.Add(this.ArrivalTimeBool);
+            this.InputGbx.Controls.Add(this.TimeLbl);
+            this.InputGbx.Controls.Add(this.TimeDtp);
             this.InputGbx.Controls.Add(this.EndStationCbx);
             this.InputGbx.Controls.Add(this.StartStationCbx);
             this.InputGbx.Controls.Add(this.EndStationLbl);
@@ -56,18 +62,49 @@
             this.InputGbx.Controls.Add(this.SearchBtn);
             this.InputGbx.Location = new System.Drawing.Point(12, 12);
             this.InputGbx.Name = "InputGbx";
-            this.InputGbx.Size = new System.Drawing.Size(592, 51);
+            this.InputGbx.Size = new System.Drawing.Size(540, 82);
             this.InputGbx.TabIndex = 0;
             this.InputGbx.TabStop = false;
             this.InputGbx.Text = "Eingabe der Bedinungen:";
             // 
+            // ArrivalTimeBool
+            // 
+            this.ArrivalTimeBool.AutoSize = true;
+            this.ArrivalTimeBool.Location = new System.Drawing.Point(241, 53);
+            this.ArrivalTimeBool.Name = "ArrivalTimeBool";
+            this.ArrivalTimeBool.Size = new System.Drawing.Size(92, 19);
+            this.ArrivalTimeBool.TabIndex = 5;
+            this.ArrivalTimeBool.Text = "Ankunftszeit";
+            this.ArrivalTimeBool.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ArrivalTimeBool.UseVisualStyleBackColor = true;
+            // 
+            // TimeLbl
+            // 
+            this.TimeLbl.AutoSize = true;
+            this.TimeLbl.Location = new System.Drawing.Point(6, 57);
+            this.TimeLbl.Name = "TimeLbl";
+            this.TimeLbl.Size = new System.Drawing.Size(30, 15);
+            this.TimeLbl.TabIndex = 4;
+            this.TimeLbl.Text = "Zeit:";
+            // 
+            // TimeDtp
+            // 
+            this.TimeDtp.Checked = false;
+            this.TimeDtp.CustomFormat = "dd.MM.yy HH:mm";
+            this.TimeDtp.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.TimeDtp.Location = new System.Drawing.Point(82, 51);
+            this.TimeDtp.Name = "TimeDtp";
+            this.TimeDtp.Size = new System.Drawing.Size(121, 23);
+            this.TimeDtp.TabIndex = 3;
+            // 
             // EndStationCbx
             // 
+            this.EndStationCbx.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.EndStationCbx.FormattingEnabled = true;
-            this.EndStationCbx.Location = new System.Drawing.Point(309, 22);
+            this.EndStationCbx.Location = new System.Drawing.Point(313, 22);
             this.EndStationCbx.Name = "EndStationCbx";
             this.EndStationCbx.Size = new System.Drawing.Size(121, 23);
-            this.EndStationCbx.TabIndex = 6;
+            this.EndStationCbx.TabIndex = 2;
             this.EndStationCbx.DropDown += new System.EventHandler(this.GetOffers);
             this.EndStationCbx.Leave += new System.EventHandler(this.SetRealStationNameInComboBox);
             // 
@@ -77,7 +114,7 @@
             this.StartStationCbx.Location = new System.Drawing.Point(82, 22);
             this.StartStationCbx.Name = "StartStationCbx";
             this.StartStationCbx.Size = new System.Drawing.Size(121, 23);
-            this.StartStationCbx.TabIndex = 5;
+            this.StartStationCbx.TabIndex = 1;
             this.StartStationCbx.DropDown += new System.EventHandler(this.GetOffers);
             this.StartStationCbx.Leave += new System.EventHandler(this.SetRealStationNameInComboBox);
             // 
@@ -85,7 +122,7 @@
             // 
             this.EndStationLbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.EndStationLbl.AutoSize = true;
-            this.EndStationLbl.Location = new System.Drawing.Point(237, 26);
+            this.EndStationLbl.Location = new System.Drawing.Point(241, 26);
             this.EndStationLbl.Name = "EndStationLbl";
             this.EndStationLbl.Size = new System.Drawing.Size(66, 15);
             this.EndStationLbl.TabIndex = 3;
@@ -103,10 +140,10 @@
             // SearchBtn
             // 
             this.SearchBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.SearchBtn.Location = new System.Drawing.Point(473, 22);
+            this.SearchBtn.Location = new System.Drawing.Point(459, 22);
             this.SearchBtn.Name = "SearchBtn";
-            this.SearchBtn.Size = new System.Drawing.Size(75, 23);
-            this.SearchBtn.TabIndex = 0;
+            this.SearchBtn.Size = new System.Drawing.Size(75, 50);
+            this.SearchBtn.TabIndex = 4;
             this.SearchBtn.Text = "Suchen";
             this.SearchBtn.UseVisualStyleBackColor = true;
             this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
@@ -123,11 +160,12 @@
             this.Platform,
             this.EndTime,
             this.Endstation});
-            this.ConnectionsDgv.Location = new System.Drawing.Point(12, 90);
+            this.ConnectionsDgv.Location = new System.Drawing.Point(15, 128);
             this.ConnectionsDgv.Name = "ConnectionsDgv";
             this.ConnectionsDgv.RowTemplate.Height = 25;
-            this.ConnectionsDgv.Size = new System.Drawing.Size(592, 348);
+            this.ConnectionsDgv.Size = new System.Drawing.Size(540, 428);
             this.ConnectionsDgv.TabIndex = 1;
+            this.ConnectionsDgv.TabStop = false;
             // 
             // StartTime
             // 
@@ -179,9 +217,8 @@
             // 
             // ConnactionsLbl
             // 
-            this.ConnactionsLbl.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ConnactionsLbl.AutoSize = true;
-            this.ConnactionsLbl.Location = new System.Drawing.Point(15, 72);
+            this.ConnactionsLbl.Location = new System.Drawing.Point(18, 110);
             this.ConnactionsLbl.Name = "ConnactionsLbl";
             this.ConnactionsLbl.Size = new System.Drawing.Size(84, 15);
             this.ConnactionsLbl.TabIndex = 2;
@@ -192,7 +229,7 @@
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(616, 450);
+            this.ClientSize = new System.Drawing.Size(564, 568);
             this.Controls.Add(this.ConnactionsLbl);
             this.Controls.Add(this.ConnectionsDgv);
             this.Controls.Add(this.InputGbx);
@@ -222,5 +259,8 @@
         private DataGridViewTextBoxColumn Endstation;
         private ComboBox StartStationCbx;
         private ComboBox EndStationCbx;
+        private DateTimePicker TimeDtp;
+        private Label TimeLbl;
+        private CheckBox ArrivalTimeBool;
     }
 }
