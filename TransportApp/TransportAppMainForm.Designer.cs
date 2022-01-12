@@ -73,7 +73,7 @@
             this.ArrivalTimeBool.Location = new System.Drawing.Point(241, 53);
             this.ArrivalTimeBool.Name = "ArrivalTimeBool";
             this.ArrivalTimeBool.Size = new System.Drawing.Size(92, 19);
-            this.ArrivalTimeBool.TabIndex = 5;
+            this.ArrivalTimeBool.TabIndex = 4;
             this.ArrivalTimeBool.Text = "Ankunftszeit";
             this.ArrivalTimeBool.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ArrivalTimeBool.UseVisualStyleBackColor = true;
@@ -143,7 +143,7 @@
             this.SearchBtn.Location = new System.Drawing.Point(459, 22);
             this.SearchBtn.Name = "SearchBtn";
             this.SearchBtn.Size = new System.Drawing.Size(75, 50);
-            this.SearchBtn.TabIndex = 4;
+            this.SearchBtn.TabIndex = 5;
             this.SearchBtn.Text = "Suchen";
             this.SearchBtn.UseVisualStyleBackColor = true;
             this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);

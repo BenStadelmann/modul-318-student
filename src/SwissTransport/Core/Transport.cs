@@ -53,7 +53,7 @@
                 .GetAwaiter()
                 .GetResult();
 
-        public async Task<Connections> GetConnectionsAsync(string fromStation, string toStation, DateTime time, bool IsArrivalTime)
+        public async Task<Connections> GetConnectionsAsync(string fromStation, string toStation, DateTime time, bool isArrivalTime)
         {
             if (string.IsNullOrEmpty(fromStation))
             {
@@ -65,7 +65,7 @@
                 throw new ArgumentNullException(nameof(toStation));
             }
 
-            var uri = new Uri($"{WebApiHost}connections?from={fromStation}&to={toStation}&date={time.ToString("yyyy-MM-dd")}&time={time.ToString("HH:mm")}&isArrivalTime={Convert.ToInt32(IsArrivalTime)}");
+            var uri = new Uri($"{WebApiHost}connections?from={fromStation}&to={toStation}&date={time.ToString("yyyy-MM-dd")}&time={time.ToString("HH:mm")}&isArrivalTime={Convert.ToInt32(isArrivalTime)}");
             return await this.GetObjectAsync<Connections>(uri)
                 .ConfigureAwait(false);
         }

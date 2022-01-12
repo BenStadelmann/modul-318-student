@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TransportApp
 {
-    internal class ConnectionView
+    internal class ConnectionView //Datas of the DataGridView will be created here
     {
         public string StartTime { get; set; }
         public string StartStation { get; set; }
