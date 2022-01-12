@@ -93,5 +93,17 @@ namespace TransportApp
                     senderCbx.Text = realStationName;
             }
         }
+
+        private void ArrivalTimeBool_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (ArrivalTimeBool.Checked)
+                    ArrivalTimeBool.Checked = false;
+                else
+                    ArrivalTimeBool.Checked = true;
+            }
+            
+        }
     }
 }

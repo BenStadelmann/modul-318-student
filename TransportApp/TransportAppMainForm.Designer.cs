@@ -77,6 +77,7 @@
             this.ArrivalTimeBool.Text = "Ankunftszeit";
             this.ArrivalTimeBool.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ArrivalTimeBool.UseVisualStyleBackColor = true;
+            this.ArrivalTimeBool.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ArrivalTimeBool_KeyDown);
             // 
             // TimeLbl
             // 
